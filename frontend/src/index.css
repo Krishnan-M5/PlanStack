@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Styles ─────────────────────────────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* ─── Scrollbar Styling ───────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ─── Custom Utility Classes ──────────────────────────────────────────────── */
+
+@layer components {
+  .glass-card {
+    @apply bg-surface-800/50 backdrop-blur-xl border border-surface-700/50 rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-primary-500/30 hover:shadow-lg hover:shadow-primary-500/5;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold px-6 py-2.5 rounded-xl
+           hover:from-primary-500 hover:to-primary-400 active:scale-[0.98]
+           transition-all duration-200 shadow-lg shadow-primary-500/25
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .btn-secondary {
+    @apply bg-surface-700/50 text-surface-200 font-medium px-6 py-2.5 rounded-xl border border-surface-600/50
+           hover:bg-surface-700 hover:border-surface-500/50
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply bg-red-500/10 text-red-400 font-medium px-6 py-2.5 rounded-xl border border-red-500/20
+           hover:bg-red-500/20 hover:border-red-500/40
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-field {
+    @apply w-full bg-surface-800/80 border border-surface-600/50 rounded-xl px-4 py-3
+           text-surface-100 placeholder-surface-400
+           focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/50
+           transition-all duration-200;
+  }
+
+  .select-field {
+    @apply w-full bg-surface-800/80 border border-surface-600/50 rounded-xl px-4 py-3
+           text-surface-100 appearance-none cursor-pointer
+           focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/50
+           transition-all duration-200;
+  }
+
+  .label-text {
+    @apply block text-sm font-medium text-surface-300 mb-1.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold tracking-wide uppercase;
+  }
+
+  .stat-card {
+    @apply glass-card p-6 flex flex-col gap-2;
+  }
+}
+
+/* ─── Animations ──────────────────────────────────────────────────────────── */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─── Book Page Open Animation ────────────────────────────────────────────── */
+
+@keyframes bookPageLeft {
+  0% {
+    transform: perspective(1500px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1500px) rotateY(-90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes bookPageRight {
+  0% {
+    transform: perspective(1500px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1500px) rotateY(90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes contentReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+    filter: blur(8px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.5);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(99, 102, 241, 0.3), 0 0 100px rgba(99, 102, 241, 0.1);
+  }
+}
+
+.book-cover {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  pointer-events: none;
+}
+
+.book-page {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 30%, #1e293b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 28px,
+    rgba(99, 102, 241, 0.03) 28px,
+    rgba(99, 102, 241, 0.03) 29px
+  );
+}
+
+.book-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(99, 102, 241, 0.4), rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.4));
+}
+
+.book-page-left::after {
+  right: 0;
+}
+
+.book-page-right::after {
+  left: 0;
+}
+
+.book-page-left {
+  transform-origin: right center;
+  animation: bookPageLeft 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+.book-page-right {
+  transform-origin: left center;
+  animation: bookPageRight 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+.book-spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, #6366f1, #4f46e5, #6366f1);
+  z-index: 1;
+  animation: bookPageLeft 0.6s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+.book-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  animation: fadeOut 0.4s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+
+.content-reveal {
+  animation: contentReveal 0.7s ease-out forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6366f1;
+  animation: particleFloat 1.5s ease-out forwards;
+}
