@@ -58,7 +58,12 @@ export const AuthProvider = ({ children }) => {
     return response.data;
   };
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await API.post('/auth/logout');
+    } catch {
+      // Even if the API call fails, proceed with client-side logout
+    }
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     sessionStorage.removeItem('dashboardAnimationShown');
