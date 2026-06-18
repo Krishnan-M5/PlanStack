@@ -13,6 +13,7 @@ import {
   TrendingUp,
   ArrowRight,
   Calendar,
+  Quote,
 } from 'lucide-react';
 
 const StatCard = ({ icon: Icon, label, value, color, gradient }) => (
@@ -91,6 +92,20 @@ const Dashboard = () => {
           Welcome back, <span className="text-primary-400">{user?.fullName?.split(' ')[0]}</span>
         </h1>
         <p className="text-surface-400 mt-1">Here&apos;s an overview of your projects and tasks.</p>
+      </div>
+
+      {/* Motivational Quote */}
+      <div className="relative overflow-hidden rounded-2xl border border-surface-700/40 bg-gradient-to-r from-surface-800/60 via-surface-800/40 to-surface-800/60 p-5 animate-slide-up">
+        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary-400 via-primary-500 to-primary-700 rounded-full" />
+        <div className="flex items-start gap-4 pl-4">
+          <Quote className="w-8 h-8 text-primary-500/30 flex-shrink-0 mt-0.5 rotate-180" />
+          <div>
+            <p className="text-surface-200 text-sm md:text-base italic leading-relaxed font-medium">
+              "You don&apos;t have to be great to start, but you have to start to be great."
+            </p>
+            <p className="text-primary-400/70 text-xs mt-2 font-semibold tracking-wide uppercase">— Zig Ziglar</p>
+          </div>
+        </div>
       </div>
 
       {/* Stats Grid */}
