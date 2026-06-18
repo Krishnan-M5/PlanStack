@@ -68,13 +68,36 @@ project/
 │   ├── tailwind.config.js
 │   ├── vite.config.js
 │   └── package.json
+├── docker-compose.yml
 ├── DATABASE_SCHEMA.md
 └── README.md
 ```
 
 ## Setup Instructions
 
-### Prerequisites
+### Option A: Docker (Recommended — One Command)
+
+Prerequisites: [Docker](https://docs.docker.com/get-docker/) and Docker Compose installed.
+
+```bash
+docker-compose up --build
+```
+
+That's it! The app will be available at:
+| Service   | URL                      |
+|-----------|--------------------------|
+| Frontend  | http://localhost         |
+| Backend   | http://localhost:5000/api |
+| MySQL     | localhost:3306           |
+
+To stop: `docker-compose down`
+To stop and remove data: `docker-compose down -v`
+
+---
+
+### Option B: Manual Setup
+
+#### Prerequisites
 - Node.js (v18+)
 - MySQL Server (v8.0+)
 
