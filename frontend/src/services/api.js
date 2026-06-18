@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const isProd = import.meta.env.PROD;
+const API_BASE = import.meta.env.VITE_API_URL || (isProd ? 'https://planstack-api.onrender.com/api' : '/api');
+
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: API_BASE,
   headers: {
     'Content-Type': 'application/json',
   },
