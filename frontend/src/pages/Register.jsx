@@ -98,7 +98,7 @@ const Register = () => {
             <Layers className="w-7 h-7 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-white">Create your account</h1>
-          <p className="text-surface-400 mt-1">Start managing your projects with ProjectFlow</p>
+          <p className="text-surface-400 mt-1">Start managing your projects with PlanStack</p>
         </div>
 
         {/* Form Card */}

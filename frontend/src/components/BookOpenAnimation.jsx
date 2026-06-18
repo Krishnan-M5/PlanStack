@@ -21,7 +21,7 @@ const BookOpenAnimation = ({ onComplete }) => {
     const timer = setTimeout(() => {
       setIsVisible(false);
       onComplete?.();
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
@@ -50,7 +50,7 @@ const BookOpenAnimation = ({ onComplete }) => {
         >
           <Layers className="w-8 h-8 text-white" />
         </div>
-        <h2 className="text-2xl font-bold text-white tracking-tight">ProjectFlow</h2>
+        <h2 className="text-2xl font-bold text-white tracking-tight">Welcome to PlanStack</h2>
         <p className="text-primary-300/60 text-sm mt-1">Opening your workspace...</p>
       </div>
 

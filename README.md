@@ -1,4 +1,4 @@
-# ProjectFlow — Project Management System
+# PlanStack — Project Management System
 
 A comprehensive, production-grade Project Management System built with React, Node.js, Express, and MySQL.
 

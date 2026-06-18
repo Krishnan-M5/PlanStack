@@ -58,7 +58,7 @@ const Layout = ({ children }) => {
               <Layers className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-white tracking-tight">ProjectFlow</h1>
+              <h1 className="text-lg font-bold text-white tracking-tight">PlanStack</h1>
               <p className="text-[10px] text-surface-500 uppercase tracking-widest font-semibold">Management</p>
             </div>
             <button
@@ -130,7 +130,7 @@ const Layout = ({ children }) => {
             </button>
             <div className="flex items-center gap-2">
               <Layers className="w-5 h-5 text-primary-400" />
-              <span className="font-bold text-white">ProjectFlow</span>
+              <span className="font-bold text-white">PlanStack</span>
             </div>
           </div>
         </header>
